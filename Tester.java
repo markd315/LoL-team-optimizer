@@ -4,14 +4,14 @@ public class Tester
 	{
 		//ad ap cc tank mob
 		Champion Aatrox = new Top("Aatrox",
-		{"Jax", "Riven", "Teemo", "Fiora", "Renekton", "Tryndamere", "Pantheon", "Nasus", "Lee Sin", "Ahri"},
-		{"Yasuo", "Zilean", "Tryndamere", "Lee Sin", "Ahri"},
+		{Jax, Riven, Teemo, Fiora, Renekton, Tryndamere, Pantheon, Nasus, LeeSin, Ahri},
+		{Yasuo, Zilean, Tryndamere, Lee Sin, Ahri},
 		7, 2, 6, 5, 4,
 		{"Jungle"});
 		
 		Champion Ahri = new Mid("Ahri",
-		{"LB", "Annie", "Talon", "Kassadin", "Swain", "Akali", "Diana", "Fizz", "Ryze", "Malzahar"},
-		{"Jax", "Irelia", "Ezreal", "Shen", "Aatrox"},
+		{LB, Annie, Talon, Kassadin, Swain, Akali, Diana, Fizz, Ryze, Malzahar},
+		{Jax, Irelia, Ezreal, Shen, Aatrox},
 		2, 7, 3, 4, 7,
 		{});
 		
@@ -75,16 +75,16 @@ public class Tester
 		1, 8, 2, 5, 4,
 		{});
 		
-		Champion Aatrox = new Top("Aatrox",
+		Champion Darius = new Top("Darius",
 		{},
 		{},
-		7, 2, 6, 5, 4,
+		6, 1, 6, 4, 2,
 		{"Jungle"});
 		
 		
 		Champion Orianna = new Mid("Orianna", 
-		{"LB", "Syndra", "Diana", "Ahri", "Gragas", "Zed", "Ziggs", "Akali", "Lux", "Talon", ""},
-		{"Malphite", "Jarvan", "Wukong", "Zac", "Amumu"},
+		{LB, Syndra, Diana, Ahri, Gragas, Zed, Ziggs, Akali, Lux, Talon},
+		{Malphite, Jarvan, Wukong, Zac, Amumu},
 		3, 8, 7, 3,
 		{"Support"});
 		
