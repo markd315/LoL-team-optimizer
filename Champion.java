@@ -40,7 +40,7 @@ public class Champion
 	
 	public boolean counteredBy(Champion q)
 	{
-		String nme = q.getName()
+		String nme = q.getName();
 		for(Champion c : counterpicks)
 		{
 			if(c.getName().equalsIgnoreCase(nme))
@@ -51,7 +51,7 @@ public class Champion
 	}
 	public boolean hasSynergy(Champion q)
 	{
-		String nme = q.getName()
+		String nme = q.getName();
 		for(Champion c : synergies)
 		{
 			if(c.getName().equalsIgnoreCase(nme))
