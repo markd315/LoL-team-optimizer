@@ -339,16 +339,90 @@ public class Tester
 		8, 0, 2, 0, 8,
 		{"Top"});
 		
+		Champion MF = new ADC("Miss Fortune",
+		{},
+		{},
+		7, 3, 2, 3, 5,
+		{});
 		
+		Champion Mordekaiser = new Mid("Mordekaiser",
+		{},
+		{},
+		2, 7, 8, 0, 4,
+		{"Top"});
 		
+		Champion Morgana = new Support("Morgana",
+		{},
+		{},
+		1, 6, 3, 6, 3,
+		{"Mid"});
 		
+		Champion Nami = new Support("Nami",
+		{},
+		{},
+		3, 5, 2, 7, 5,
+		{});
 		
+		Champion Nasus = new Top("Nasus",
+		{},
+		{},
+		4, 4, 7, 4, 2,
+		{"Jungle"});
+		
+		Champion Nautilus = new Jungle("Nautilus",
+		{},
+		{},
+		1, 3, 8, 10, 5,
+		{"Support"});
+		
+		Champion Nidalee = new Mid("Nidalee",
+		{},
+		{},
+		2, 6, 4, 0, 6,
+		{"Support"});
+		
+		Champion Nocturne = new Jungle("Nocturne",
+		{},
+		{},
+		6, 1, 6, 6, 5,
+		{});
+		
+		Champion Nunu = new Jungle("Nunu",
+		{},
+		{},
+		2, 5, 6, 5, 5,
+		{"Support"});
+		
+		Champion Olaf = new Top("Olaf",
+		{},
+		{},
+		6, 0, 6, 4, 3,
+		{"Jungle"});
 		
 		Champion Orianna = new Mid("Orianna", 
 		{LB, Syndra, Diana, Ahri, Gragas, Zed, Ziggs, Akali, Lux, Talon},
 		{Malphite, Jarvan, Wukong, Zac, Amumu},
 		3, 8, 7, 3,
 		{"Support"});
+		
+		Champion Pantheon = new Jungle("Pantheon",
+		{},
+		{},
+		2, 8, 2, 5, 2,
+		{"Top"});
+		
+		Champion Nunu = new Jungle("Nunu",
+		{},
+		{},
+		2, 8, 2, 5, 2,
+		{});
+		
+		Champion Nunu = new Jungle("Nunu",
+		{},
+		{},
+		2, 8, 2, 5, 2,
+		{});
+		
 		
 	}
 
