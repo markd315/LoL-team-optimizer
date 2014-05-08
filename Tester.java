@@ -313,7 +313,31 @@ public class Tester
 		{},
 		{},
 		2, 8, 2, 5, 2,
+		{"Support"});
+		
+		Champion Malphite = new Top("Malphite",
+		{},
+		{},
+		1, 5, 8, 7, 6,
+		{"Jungle"});
+		
+		Champion Malzahar = new Mid("Malzahar",
+		{},
+		{},
+		2, 8, 3, 6, 3,
 		{});
+		
+		Champion Maokai = new Jungle("Maokai",
+		{},
+		{},
+		2, 5, 7, 6, 5,
+		{});
+		
+		Champion Yi = new Jungle("Master Yi",
+		{},
+		{},
+		8, 0, 2, 0, 8,
+		{"Top"});
 		
 		
 		
