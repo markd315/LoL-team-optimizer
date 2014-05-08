@@ -47,6 +47,18 @@ public class Champion
 				return true;
 		
 		}
+		return false;
+	}
+	public boolean hasSynergy(Champion q)
+	{
+		String nme = q.getName()
+		for(Champion c : synergies)
+		{
+			if(c.getName().equalsIgnoreCase(nme))
+				return true;
+		
+		}
+		return false;
 	}
 	public int getAD()
 	{
