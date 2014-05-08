@@ -408,20 +408,63 @@ public class Tester
 		Champion Pantheon = new Jungle("Pantheon",
 		{},
 		{},
-		2, 8, 2, 5, 2,
+		6, 3, 5, 4, 5,
 		{"Top"});
 		
-		Champion Nunu = new Jungle("Nunu",
+		Champion Poppy = new Top("Poppy",
 		{},
 		{},
-		2, 8, 2, 5, 2,
+		6, 0, 9, 4, 5,
 		{});
 		
-		Champion Nunu = new Jungle("Nunu",
+		Champion Quinn = new ADC("Quinn",
 		{},
 		{},
-		2, 8, 2, 5, 2,
+		8, 0, 2, 4, 7,
+		{"Top"});
+		
+		Champion Rammus = new Jungle("Rammus",
+		{},
+		{},
+		2, 3, 6, 5, 7,
 		{});
+		
+		Champion Renekton = new Top("Renekton",
+		{},
+		{},
+		6, 0, 7, 4, 6,
+		{});
+		
+		Champion Rengar = new Jungle("Rengar",
+		{},
+		{},
+		7, 0, 4, 5, 6,
+		{"Top"});
+		
+		Champion Riven = new Top("Riven",
+		{},
+		{},
+		9, 0, 4, 5, 9,
+		{});
+		
+		Champion Rumble = new Top("Rumble",
+		{},
+		{},
+		2, 5, 6, 5, 5,
+		{});
+		
+		Champion Ryze = new Top("Ryze",
+		{},
+		{},
+		2, 8, 6, 3, 4,
+		{"Mid"});
+		
+		Champion Sejuani = new Jungle("Sejuani",
+		{},
+		{},
+		2, 6, 6, 6, 4,
+		{});
+		
 		
 		
 	}
