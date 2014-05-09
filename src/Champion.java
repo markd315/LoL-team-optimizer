@@ -27,7 +27,7 @@ public class Champion
 	
 	public Champion find(String name)
 	{
-		for(Champion champ : Tester.getPool())
+		for(Champion champ : Pool.getPool())
 		{
 		if (champ.getName().equalsIgnoreCase(name))
 			return champ;
