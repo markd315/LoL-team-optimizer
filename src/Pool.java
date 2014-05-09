@@ -20,164 +20,164 @@ public class Pool
 			new String[]{});
 
 	static Champion Akali = new Mid("Akali",
-			new String[]{},
-			new String[]{},
+			new String[]{"LeeSin", "Garen", "Mordekaiser", "Renekton", "Annie", "Diana", "Rumble", "Katarina", "Swain"},
+			new String[]{"Diana", "Katarina", "LB", "Shen", "Ahri"},
 			7, 2, 6, 5, 7,
 			new String[]{});
 
 	static Champion Alistar = new Support("Alistar",
-			new String[]{},
-			new String[]{},
+			new String[]{"Janna", "Vayne", "Lulu", "ChoGath", "Olaf", "Morgana", "Soraka", "Zyra", "Aatrox", "Teemo"},
+			new String[]{"Vayne", "Tristana", "Ezreal", "Blitzcrank", "Yasuo"},
 			2, 3, 8, 8, 3,
 			new String[]{"Jungle", "Top"});
 
 	static Champion Amumu = new Top("Amumu",
-			new String[]{},
-			new String[]{},
+			new String[]{"Shyvana", "LeeSin", "Mundo", "Shaco", "Janna", "XinZhao", "Olaf", "KhaZix", "Vi", "Aatrox"},
+			new String[]{"Katarina", "Morgana", "Kennen", "Fiddlesticks", "Zyra"},
 			1, 4, 6, 9, 4,
 			new String[]{"Jungle"});
 
 	static Champion Anivia = new Mid("Anivia",
-			new String[]{},
-			new String[]{},
+			new String[]{"Fizz", "Kassadin", "Diana", "Orianna", "Gragas", "Talon", "LB", "Ziggs", "Zed", "Ahri"},
+			new String[]{"Jarvan", "Mundo", "Trundle", "Ashe", "Vayne"},
 			1, 9, 2, 4, 2,
 			new String[]{"Support"});
 
 	static Champion Annie = new Support("Annie",
-			new String[]{},
-			new String[]{},
+			new String[]{"Brand", "Orianna", "Morgana", "Kassadin", "Lux", "Syndra", "LB", "Xerath", "Talon", "Ziggs"},
+			new String[]{"Amumu", "Jinx", "Lucian", "Blitzcrank", "Caitlyn"},
 			3, 7, 3, 5, 2,
 			new String[]{"Mid"});
 
 	static Champion Ashe = new ADC("Ashe",
-			new String[]{},
-			new String[]{},
+			new String[]{"Ezreal", "Graves", "Sivir", "KhaZix", "Caitlyn", "Draven", "Varus", "Quinn", "Twitch", "KogMaw"},
+			new String[]{"Janna", "Leona", "Zyra", "Sona", "Blitzcrank"},
 			8, 2, 2, 6, 1,
 			new String[]{});
 
 	static Champion Blitzcrank = new Support("Blitzcrank",
-			new String[]{},
-			new String[]{},
+			new String[]{"Alistar", "Leona", "Thresh", "Ezreal", "Sivir", "Morgana", "Amumu", "Taric", "Lulu", "Nidalee"},
+			new String[]{"Vayne", "Ezreal", "Caitlyn", "Graves", "Draven"},
 			2, 4, 6, 7, 5,
 			new String[]{});
 
 	static Champion Brand = new Mid("Brand",
-			new String[]{},
-			new String[]{},
+			new String[]{"Kassadin", "Fizz", "LB", "Galio", "Lux", "Akali", "Diana", "Talon", "Ahri", "Elise"},
+			new String[]{"Amumu", "Jarvan", "Sona", "Vladimir", "Leona"},
 			2, 8, 3, 4, 2,
 			new String[]{});
 
 	static Champion Caitlyn = new ADC("Caitlyn",
-			new String[]{},
-			new String[]{},
+			new String[]{"Sivir", "Jinx", "Varus", "Tristana", "Lucian", "KogMaw", "Jinx", "Draven", "Yasuo", "Leona"},
+			new String[]{"Nunu", "Taric", "Leona", "Blitzcrank", "Vi"},
 			8, 1, 2, 3, 5,
 			new String[]{});
 
 	static Champion Cassiopeia = new Mid("Cassiopeia",
-			new String[]{},
-			new String[]{},
+			new String[]{"Galio", "LB", "Talon", "Fizz", "Lux", "Diana", "Kassadin", "Akali", "Zed"},
+			new String[]{"Teemo", "Singed", "Yorick", "Amumu", "Katarina"},
 			1, 8, 2, 5, 4,
 			new String[]{});
 
 	static Champion ChoGath = new Top("ChoGath",
-			new String[]{},
-			new String[]{},
+			new String[]{"Warwick", "Vayne", "Kayle", "KogMaw", "Garen", "Renekton", "XinZhao", "Jax", "Fizz", "Aatrox"},
+			new String[]{"Yasuo", "Lulu", "Teemo", "Darius", "Aatrox"},
 			2, 4, 7, 5, 2,
 			new String[]{"Jungle", "Mid"});
 
 	static Champion Corki = new ADC("Corki",
-			new String[]{},
-			new String[]{},
+			new String[]{"Caitlyn", "Draven", "Varus", "Urgot", "Lucian", "KogMaw", "Aatrox", "Quinn", "Akali", "Ashe"},
+			new String[]{"Leona", "Blitzcrank", "Taric", "Sona", "Soraka"},
 			7, 3, 2, 1, 5,
 			new String[]{});
 
 	static Champion Darius = new Top("Darius",
-			new String[]{},
-			new String[]{},
+			new String[]{"Teemo", "Kayle", "Jayce", "Yorick", "Aatrox", "Renekton", "Jax", "Elise", "ChoGath", "Kennen"},
+			new String[]{"Draven", "Garen", "Olaf", "Blitzcrank", "Fiora"},
 			6, 1, 6, 4, 2,
 			new String[]{"Jungle"});
 
 	static Champion Diana = new Mid("Diana",
-			new String[]{},
-			new String[]{},
+			new String[]{"Mordekaiser", "Riven", "Irelia", "Swain", "Syndra", "ChoGath", "Heimerdinger", "Jax", "Ryze", "Ahri"},
+			new String[]{"Akali", "Kassadin", "Leona", "Orianna", "Aatrox"},
 			3, 6, 2, 5, 5,
 			new String[]{"Jungle"});
 
 	static Champion Mundo = new Top("Dr Mundo",
-			new String[]{},
-			new String[]{},
+			new String[]{"KogMaw", "Darius", "Trundle", "Riven", "MF", "Fizz", "Tristana", "Shyvana", "Elise", "Aatrox"},
+			new String[]{"Anivia", "Teemo", "Nidalee", "Aatrox", "Jax"},
 			2, 3, 10, 2, 5,
 			new String[]{"Jungle"});
 
 	static Champion Draven = new ADC("Draven",
-			new String[]{},
-			new String[]{},
+			new String[]{"Varus", "Caitlyn", "Thresh", "Blitzcrank", "Quinn", "Nami", "Leona", "KogMaw", "Taric", "Teemo"},
+			new String[]{"Darius", "Thresh", "Leona", "Taric", "Blitzcrank"},
 			10, 0, 1, 2, 5,
 			new String[]{});
 
 	static Champion Elise= new Mid("Elise",
-			new String[]{},
-			new String[]{},
+			new String[]{"Kassadin", "Wukong", "Yorick", "Mordekaiser", "Malzahar", "LB", "Gangplank", "Riven", "ChoGath", "Akali"},
+			new String[]{"Rengar", "Blitzcrank", "Leona", "Karma", "Orianna"},
 			2, 6, 5, 4, 5,
 			new String[]{"Jungle"});
 
 	static Champion Evelynn = new Jungle("Evelynn",
-			new String[]{},
-			new String[]{},
+			new String[]{"Ryze", "LeeSin", "Kassadin", "Mordekaiser", "TF", "Cassiopeia", "Annie", "Malzahar"},
+			new String[]{"Shen", "Orianna", "ChoGath", "Udyr", "Fizz"},
 			5, 5, 3, 5, 5,
 			new String[]{});
 
 	static Champion Ezreal = new ADC("Ezreal",
-			new String[]{},
-			new String[]{},
+			new String[]{"Draven", "Graves", "Caitlyn", "MF", "Twitch", "Vayne", "Akali", "Sivir", "Tristana", "Corki"},
+			new String[]{"Sona", "Leona", "Taric", "Soraka", "Blitzcrank"},
 			8, 3, 2, 0, 6,
 			new String[]{});
 
 	static Champion Fiddlesticks = new Jungle("Fiddlesticks",
-			new String[]{},
-			new String[]{},
+			new String[]{"Janna", "Xinzhao", "Diana", "Alistar", "Kassadin", "Chogath", "Tristana", "LB", "Aatrox", "Syndra"},
+			new String[]{"Amumu", "Galio", "Kennen", "Jarvan", "Orianna"},
 			2, 7, 3, 6, 3,
 			new String[]{"Mid"});
 
 	static Champion Fiora = new Top("Fiora",
-			new String[]{},
-			new String[]{},
+			new String[]{"Jax", "Pantheon", "Malphite", "Singed", "Renekton", "Riven", "Darius", "Teemo", "Elise", "Yorick"},
+			new String[]{"Darius", "Morgana", "Amumu", "Blitzcrank", "Ahri"},
 			7, 0, 2, 0, 6,
 			new String[]{});
 
 	static Champion Fizz = new Mid("Fizz",
-			new String[]{},
-			new String[]{},
+			new String[]{"Ryze", "Mordekaiser", "Akali", "Diana", "Kayle", "Lissandra", "Annie", "Elise", "Malzahar", "Zed"},
+			new String[]{"Amumu", "Nami", "Aatrox", "Jarvan", "Malphite"},
 			3, 8, 1, 2, 7,
 			new String[]{"Jungle"});
 
 	static Champion Galio = new Mid("Galio",
-			new String[]{},
-			new String[]{},
+			new String[]{"Udyr", "Talon", "Janna", "Yasuo", "Khazix", "Zed", "Lux", "Xinzhao", "Aatrox"},
+			new String[]{"Katarina", "Fiddlesticks", "Wukong", "Nunu", "Amumu"},
 			1, 6, 6, 7, 2,
 			new String[]{"Support"});
 
 	static Champion Gangplank = new Top("Gangplank",
-			new String[]{},
-			new String[]{},
+			new String[]{"Pantheon", "Fiora", "Irelia", "Udyr", "Jax", "Riven", "Poppy", "Rumble", "Jayce", "Yorick"},
+			new String[]{"Amumu", "TF", "Hecarim", "Aatrox", "Nidalee"},
 			5, 2, 5, 4, 5,
 			new String[]{"Jungle"});
 
 	static Champion Garen = new Top("Garen",
-			new String[]{},
-			new String[]{},
+			new String[]{"Teemo", "Elise", "Pantheon", "Jayce", "Yorick", "Nidalee", "Darius", "Fiora", "Kayle", "Kennen"},
+			new String[]{"Lux", "Darius", "Xinzhao", "Jarvan", "Aatrox"},
 			2, 2, 10, 4, 5,
 			new String[]{});
 
 	static Champion Gragas = new Mid("Gragas",
-			new String[]{},
-			new String[]{},
+			new String[]{"Fizz", "Yasuo", "Ahri", "Mordekaiser", "LB", "Evelynn", "Akali", "Fizz", "Ziggs"},
+			new String[]{"Ashe", "Malphite", "Khazix", "Aatrox", "Yasuo"},
 			2, 7, 6, 5, 4,
 			new String[]{});
 
 	static Champion Graves = new ADC("Graves",
-			new String[]{},
-			new String[]{},
+			new String[]{"Caitlyn", "Sivir", "MF", "Urgot", "Draven", "Corki", "Tristana", "Aatrox", "Taric", "Kogmaw"},
+			new String[]{"Taric", "Leona", "Blitzcrank", "Soraka", "Nami"},
 			8, 1, 4, 2, 5,
 			new String[]{});
 
