@@ -1,5 +1,6 @@
 public class Champion
 {
+	private boolean isPicked = false, isBanned = false;
 	private String name;
 	private String[] altRoles, counterpicks, synergies;
 	private int ad, ap, tank, cc, mobility;
@@ -14,6 +15,23 @@ public class Champion
 		cc = crc;
 		mobility = mob;
 	}
+	public void ban()
+	{
+	this.isBanned = true;	
+	}
+	public void pick()
+	{
+		this.isPicked = true;
+	}
+	public boolean picked()
+	{
+		return isPicked;
+	}
+	public boolean banned()
+	{
+		return isBanned;
+	}
+	
 	public boolean isIn(String x, String[] y)
 	{
 		for(String q : y)
