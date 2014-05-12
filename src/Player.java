@@ -13,35 +13,6 @@ public class Player
 		eTier = e;
 	}
 
-	public Player(String n, Champion[] a, Champion[] b, Champion[] c, Champion[] d)
-	{
-		name = n;
-		aTier = a;
-		bTier = b;
-		cTier = c;
-		dTier = d;
-	}
-
-	public Player(String n, Champion[] a, Champion[] b, Champion[] c)
-	{
-		name = n;
-		aTier = a;
-		bTier = b;
-		cTier = c;
-	}
-
-	public Player(String n, Champion[] a, Champion[] b)
-	{
-		name = n;
-		aTier = a;
-		bTier = b;
-	}
-
-	public Player(String n, Champion[] a)
-	{
-		name = n;
-		aTier = a;
-	}
 	public Champion[] getaTier()
 	{
 		return aTier;

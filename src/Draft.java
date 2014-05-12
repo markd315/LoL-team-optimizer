@@ -86,12 +86,6 @@ public class Draft
 			recommend();
 		}
 	}
-	
-	
-	
-	
-	
-	
 	public Champion find(String name)
 	{
 		for(Champion champ : Pool.getPool())
