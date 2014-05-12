@@ -1,4 +1,4 @@
-public class Champion
+public class Champion implements Comparable<Champion>
 {
 	private boolean isPicked = false, isBanned = false;
 	private double index;
@@ -18,7 +18,7 @@ public class Champion
 	}
 	public void ban()
 	{
-	this.isBanned = true;	
+		this.isBanned = true;	
 	}
 	public void pick()
 	{
@@ -32,13 +32,17 @@ public class Champion
 	{
 		return isBanned;
 	}
-	
+
 	public boolean isIn(String x, String[] y)
 	{
 		for(String q : y)
 			if (q.equalsIgnoreCase(x))
 				return true;
 		return false;
+	}
+	public String[] getSynergies()
+	{
+		return synergies;
 	}
 	public boolean isAnADC()
 	{
@@ -91,6 +95,24 @@ public class Champion
 		return null;
 	}
 
+	public int countersInt(Champion q)
+	{
+		String[] temp = q.getCounters();
+		Champion[] temp1 = new Champion[temp.length];
+		for(int i = 0; i < temp.length; i++)
+		{
+			temp1[i] =  find(temp[i]);
+		}
+
+		for(int i = 0; i < temp1.length;  i++)
+		{
+			Champion c = temp1[i];
+			if(c.getName().equalsIgnoreCase(this.getName()))
+				return i;
+
+		}
+		return -1;
+	}
 	public boolean counters(Champion q)
 	{
 		String[] temp = q.getCounters();
@@ -100,8 +122,9 @@ public class Champion
 			temp1[i] =  find(temp[i]);
 		}
 
-		for(Champion c : temp1)
+		for(int i = 0; i < temp1.length;  i++)
 		{
+			Champion c = temp1[i];
 			if(c.getName().equalsIgnoreCase(this.getName()))
 				return true;
 
@@ -126,6 +149,25 @@ public class Champion
 		}
 		return false;
 	}
+	public int countersInt(String x)
+	{
+		Champion q = find(x);
+		String[] temp = q.getCounters();
+		Champion[] temp1 = new Champion[temp.length];
+		for(int i = 0; i < temp.length; i++)
+		{
+			temp1[i] =  find(temp[i]);
+		}
+
+		for(int i = 0; i < temp1.length;  i++)
+		{
+			Champion c = temp1[i];
+			if(c.getName().equalsIgnoreCase(this.getName()))
+				return i;
+
+		}
+		return -1;
+	}
 
 	public boolean counteredBy(Champion q)
 	{
@@ -137,6 +179,18 @@ public class Champion
 
 		}
 		return false;
+	}
+	public int counteredByInt(Champion q)
+	{
+		String nme = q.getName();
+		for(int i = 0; i < counterpicks.length; i++)//every string c in counterpicks
+		{
+			String c = counterpicks[i];
+			if(c.equalsIgnoreCase(nme))
+				return i;
+
+		}
+		return -1;
 	}
 	public boolean counteredBy(String x)
 	{
@@ -150,6 +204,19 @@ public class Champion
 		}
 		return false;
 	}
+	public int counteredByInt(String x)
+	{
+		Champion q = find(x);
+		String nme = q.getName();
+		for(int i = 0; i < counterpicks.length; i++)//every string c in counterpicks
+		{
+			String c = counterpicks[i];
+			if(c.equalsIgnoreCase(nme))
+				return i;
+
+		}
+		return -1;
+	}
 	public boolean hasSynergy(Champion q)
 	{
 		String nme = q.getName();
@@ -161,6 +228,18 @@ public class Champion
 		}
 		return false;
 	}
+	public int hasSynergyInt(Champion q)
+	{
+		String nme = q.getName();
+		for(int i = 0; i < synergies.length; i++)//every string c in counterpicks
+		{
+			String c = synergies[i];
+			if(c.equalsIgnoreCase(nme))
+				return i;
+
+		}
+		return -1;
+	}
 	public boolean hasSynergy(String nme)
 	{
 		for(String c : synergies)
@@ -170,6 +249,17 @@ public class Champion
 
 		}
 		return false;
+	}
+	public int hasSynergyInt(String nme)
+	{
+		for(int i = 0; i < synergies.length; i++)//every string c in counterpicks
+		{
+			String c = synergies[i];
+			if(c.equalsIgnoreCase(nme))
+				return i;
+
+		}
+		return -1;
 	}
 	public int getAD()
 	{
@@ -194,5 +284,21 @@ public class Champion
 	public String[] getAltRoles() 
 	{
 		return altRoles;
+	}
+	public double getIndex()
+	{
+		return index;
+	}
+	public void setIndex(double x)
+	{
+		index = x;
+	}
+	public int compareTo(Champion o)
+	{
+		if(this.getIndex()-o.getIndex() > 0.0)
+			return 1;
+		if(this.getIndex()-o.getIndex() < 0.0)
+			return -1;
+		return 0;
 	}
 }

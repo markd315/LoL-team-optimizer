@@ -2,9 +2,11 @@ import java.io.IOException;
 
 public class Pool
 {
-	//TODO Finish finding a way to handle fileIO easily for 5s teams
 	//TODO Code initial algorithm
+	// Kinda done? Finish finding a way to handle fileIO easily for 5s teams
+	//TODO Provide toggles/sliders for algorithm weight
 	//TODO Handle fileIO for metagame
+	//TODO Menu for after pool recommendations
 	//TODO Design and code an easy to use, intuitive GUI
 	//TODO Update for Braum
 
@@ -605,6 +607,7 @@ public class Pool
 	public static void main(String[] args) throws IOException
 	{
 		Input in = new Input();
+		Draft d = new Draft();
 
 	}
 	public static Champion[] getPool()
