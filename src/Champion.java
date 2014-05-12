@@ -1,6 +1,7 @@
 public class Champion
 {
 	private boolean isPicked = false, isBanned = false;
+	private double index;
 	private String name;
 	private String[] altRoles, counterpicks, synergies;
 	private int ad, ap, tank, cc, mobility;

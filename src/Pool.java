@@ -1,7 +1,6 @@
 public class Pool
 {
 	//TODO Implement pick preferences and handling for those
-	//TODO Code draft procedure
 	//TODO Code initial algorithm
 	//TODO Find a way to handle fileIO easily for 5s teams and metagame shifts
 	//TODO Design and code an easy to use, intuitive GUI
