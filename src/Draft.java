@@ -7,6 +7,25 @@ public class Draft
 	public static ArrayList<Champion> purplePicks = new ArrayList<Champion>();
 	public static ArrayList<Champion> enemyTeam = new ArrayList<Champion>();
 	public static ArrayList<Champion> Team = new ArrayList<Champion>();
+	public static int[] teamStats = new int[4];
+	public static int[] calcTeamStats(ArrayList<Champion> x)
+	{
+		int ad = 0;
+		int ap = 0;
+		int hp = 0;
+		int cc = 0;
+		//int mob = 0;
+		for(Champion c : x)
+		{
+			ad += c.getAD();
+			ap += c.getAP();
+			hp += c.getTank();
+			cc += c.getCC();
+			//mob += c.getMob();
+		}
+		return new int[]{ad, ap, hp, cc};
+
+	}
 	public static  void setTeams()
 	{
 		if(!isBlue)
@@ -25,6 +44,8 @@ public class Draft
 		{
 			Team = purplePicks;
 		}
+		//bluePicks.add(new Champion("blank", new String[]{}, new String[]{}, 0, 0, 0, 0, 0, new String[]{}));
+		//purplePicks.add(new Champion("blank", new String[]{}, new String[]{}, 0, 0, 0, 0, 0, new String[]{}));
 	}
 	public static boolean isBlue;
 	Scanner in = new Scanner(System.in);
@@ -72,7 +93,7 @@ public class Draft
 			System.out.println("Who does Purple select?");
 			Champion c = find(in.next());
 			c.ban();
-			bans.add(c);
+			purplePicks.add(c);
 		}
 		else
 		{
@@ -85,9 +106,19 @@ public class Draft
 		{
 			c.setIndex(getSelectionIndex(c));
 		}
-		Collections.sort(Arrays.asList(Pool.getPool())); //Sorts pool by the calculated indices
-		//Print highest selection indexes in descending order, those are suggested picks
+		List<Champion> sortedByIndex  = Arrays.asList(Pool.getPool());
+		Collections.sort(sortedByIndex); //Sorts pool by the calculated indices
+		Collections.reverse(sortedByIndex);
+		printPicks(sortedByIndex);
 		menu();
+	}
+	private void printPicks(List<Champion> x)
+	{
+		for(int i = 0; i < 5; i++)
+		{
+			System.out.println("#" + (i+1) + ": " + x.get(i).getName() + " = " + Math.round(x.get(i).getIndex()*100.0)/100.0);
+		}
+
 	}
 	public double getSelectionIndex(Champion c)
 	{
@@ -99,82 +130,108 @@ public class Draft
 		 */
 		double weight = 1.0;
 		double index = 1.0;
-		for(Champion s : enemyTeam)
-		{
-			if(s.counters(c))
+		if(enemyTeam.size() > 0)
+			for(Champion s : enemyTeam)
 			{
-				index -= (weight * .3)*(10.0-(double)s.countersInt(c));
+				if(s.counters(c))
+				{
+					index -= (weight * .3)*(10.0-(double)s.countersInt(c));
+				}
+				if(c.counters(s))
+				{
+					index += (weight * .3)*(10.0-(double)c.countersInt(s));
+				}
 			}
-		}
-		for(Champion s : enemyTeam)
-		{
-			if(c.counters(s))
+		if(enemyTeam.size() > 0)
+			for(Champion s : Team)
 			{
-				index += (weight * .3)*(10.0-(double)c.countersInt(s));
+				if(s.hasSynergy(c))
+				{
+					index += (weight * .15)*(7.0-(double)s.hasSynergyInt(c));
+				}
+				if(c.hasSynergy(s))
+				{
+					index += (weight * .15)*(10.0-(double)c.hasSynergyInt(s));
+				}
 			}
-		}
-		for(Champion s : Team)
+		ArrayList<Champion> hypotheticalTeam = new ArrayList<Champion>();
+		clone(hypotheticalTeam, Team);
+		hypotheticalTeam.add(c);
+		index += (variability(calcTeamStats(Team)) - variability(calcTeamStats(hypotheticalTeam)))*.02* weight;
+		if(Team.size() > 0)
 		{
-			if(s.hasSynergy(c))
-			{
-				index += (weight * .15)*(7.0-(double)s.hasSynergyInt(c));
-			}
+			int testDex = 0;
+			if(!hasMid() && c.isAMid())
+				testDex++;
+			if(!hasTop() && c.isATop())
+				testDex++;
+			if(!hasADC() && c.isAnADC())
+				testDex++;
+			if(!hasSupport() && c.isASupport())
+				testDex++;
+			if(!hasJungle() && c.isAJungle())
+				testDex++;
+			double roleFit = ((double)testDex/(double)c.countRoles());
+			roleFit *= .05 * weight;
+			index += roleFit;
 		}
-		for(Champion s : Team)
-		{
-			if(c.hasSynergy(s))
-			{
-				index += (weight * .15)*(10.0-(double)c.hasSynergyInt(s));
-			}
-		}
-
-		//TODO deal with role needs using hasX() boolean methods
-		//TODO use double variability(int[]) on team (converted to array) to find what elements the team lacks.  Disregard MOB.
+		//TODO Account for team preferences
+		//TODO Account for metagame
 		return index;
+	}
+	public void clone(ArrayList<Champion> blank, ArrayList<Champion> x)
+	{
+		for(Champion c : x)
+			blank.add(c);
 	}
 	public boolean hasMid()
 	{
-		for(Champion c : Team)
-		{
-			if (c.isAMid())
-				return true;
-		}
+		if(Team.size() > 0)
+			for(Champion c : Team)
+			{
+				if (c.isAMid())
+					return true;
+			}
 		return false;
 	}
-	public boolean hasAnADC()
+	public boolean hasADC()
 	{
-		for(Champion c : Team)
-		{
-			if (c.isAnADC())
-				return true;
-		}
+		if(Team.size() > 0)
+			for(Champion c : Team)
+			{
+				if (c.isAnADC())
+					return true;
+			}
 		return false;
 	}
 	public boolean hasTop()
 	{
-		for(Champion c : Team)
-		{
-			if (c.isATop())
-				return true;
-		}
+		if(Team.size() > 0)
+			for(Champion c : Team)
+			{
+				if (c.isATop())
+					return true;
+			}
 		return false;
 	}
 	public boolean hasSupport()
 	{
-		for(Champion c : Team)
-		{
-			if (c.isASupport())
-				return true;
-		}
+		if(Team.size() > 0)
+			for(Champion c : Team)
+			{
+				if (c.isASupport())
+					return true;
+			}
 		return false;
 	}
 	public boolean hasJungle()
 	{
-		for(Champion c : Team)
-		{
-			if (c.isAJungle())
-				return true;
-		}
+		if(Team.size() > 0)
+			for(Champion c : Team)
+			{
+				if (c.isAJungle())
+					return true;
+			}
 		return false;
 	}
 
@@ -210,12 +267,12 @@ public class Draft
 	}
 	public void bluePick()
 	{
-		if(!isBlue)
+		if(!isBlue || Team.size() <= 0)
 		{
 			System.out.println("Who does Blue select?");
 			Champion c = find(in.next());
 			c.ban();
-			bans.add(c);
+			bluePicks.add(c);
 		}
 		else
 		{

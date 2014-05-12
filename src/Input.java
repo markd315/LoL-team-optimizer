@@ -8,11 +8,11 @@ public class Input
 	ArrayList<Player> playerData;
 	public Input() throws IOException
 	{
-		meta = new Scanner(new File("meta.cfg"));
+		meta = new Scanner(new File("src/meta.cfg"));
 		meta.nextLine();
 
 
-		players = new Scanner(new File("yourPlayers.cfg"));
+		players = new Scanner(new File("src/yourPlayers.cfg"));
 		ArrayList<String> playerNames = new ArrayList<String>();
 		players.nextLine();
 		while(players.hasNext())
@@ -22,7 +22,7 @@ public class Input
 		playerData = new ArrayList<Player>();
 		for(String name : playerNames)
 		{
-			Scanner x = new Scanner(new File(name + ".cfg"));
+			Scanner x = new Scanner(new File("src/" + name + ".cfg"));
 			x.nextLine(); //clears comment line of cfg file
 			String a = x.nextLine();
 			String b = x.nextLine();

@@ -20,6 +20,21 @@ public class Champion implements Comparable<Champion>
 	{
 		this.isBanned = true;	
 	}
+	public int countRoles()
+	{
+		int i = 0;
+		if (isAnADC())
+			i++;
+		if (isAMid())
+			i++;
+		if (isATop())
+			i++;
+		if (isASupport())
+			i++;
+		if (isAJungle())
+			i++;
+		return i;
+	}
 	public void pick()
 	{
 		this.isPicked = true;
@@ -35,9 +50,11 @@ public class Champion implements Comparable<Champion>
 
 	public boolean isIn(String x, String[] y)
 	{
-		for(String q : y)
-			if (q.equalsIgnoreCase(x))
-				return true;
+		if(y.length > 0)
+			for(String q : y)
+				if (x.equalsIgnoreCase(q))
+					return true;
+		//TODO Fix NPE when isAx calls this
 		return false;
 	}
 	public String[] getSynergies()
@@ -52,13 +69,13 @@ public class Champion implements Comparable<Champion>
 	}
 	public boolean isAMid()
 	{
-		if (this instanceof Mid || isIn("Mid", altRoles))
+		if (this instanceof Mid || isIn("Mid", getAltRoles()))
 			return true;
 		return false;
 	}
 	public boolean isATop()
 	{
-		if (this instanceof Top || isIn("Top", altRoles))
+		if (this instanceof Top || isIn("Top", getAltRoles()))
 			return true;
 		return false;
 	}
@@ -115,19 +132,10 @@ public class Champion implements Comparable<Champion>
 	}
 	public boolean counters(Champion q)
 	{
-		String[] temp = q.getCounters();
-		Champion[] temp1 = new Champion[temp.length];
-		for(int i = 0; i < temp.length; i++)
+		for(String s : q.getCounters())
 		{
-			temp1[i] =  find(temp[i]);
-		}
-
-		for(int i = 0; i < temp1.length;  i++)
-		{
-			Champion c = temp1[i];
-			if(c.getName().equalsIgnoreCase(this.getName()))
+			if (s.equalsIgnoreCase(q.getName()))
 				return true;
-
 		}
 		return false;
 	}
