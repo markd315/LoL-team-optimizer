@@ -610,6 +610,7 @@ public class Pool
 	public static void main(String[] args) throws IOException
 	{
 		//Input in = new Input();
+		//Meta m = Input.getMeta();
 		Draft d = new Draft();
 		d.draft();
 	}

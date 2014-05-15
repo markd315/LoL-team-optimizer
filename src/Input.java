@@ -6,12 +6,21 @@ public class Input
 	static Scanner meta;
 	static Scanner players;
 	ArrayList<Player> playerData;
+	private static Meta m;
 	public Input() throws IOException
 	{
+		//Input meta
 		meta = new Scanner(new File("src/meta.cfg"));
 		meta.nextLine();
-
-
+		String aa = meta.nextLine();
+		String bb = meta.nextLine();
+		String cc = meta.nextLine();
+		String dd = meta.nextLine();
+		String ee = meta.nextLine();
+		m = new Meta(tokenize(aa), tokenize(bb), tokenize(cc), tokenize(dd), tokenize(ee));
+		
+		
+		//Input players
 		players = new Scanner(new File("src/yourPlayers.cfg"));
 		ArrayList<String> playerNames = new ArrayList<String>();
 		players.nextLine();
@@ -33,7 +42,6 @@ public class Input
 			playerData.add(pl);
 			x.close();
 		}
-		//playerData is now ready to rock!
 	}
 	public Champion[] tokenize(String x)
 	{
@@ -85,6 +93,10 @@ public class Input
 		} finally {
 			is.close();
 		}
+	}
+	public static Meta getMeta()
+	{
+		return m;
 	}
 
 }

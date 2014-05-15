@@ -86,7 +86,14 @@ public class Draft
 	public void purpleBan()
 	{
 		System.out.println("Who does Purple ban?");
-		Champion c = find(in.next());
+		Champion c = null;
+		while(c == null)
+		{
+			c = find(in.next());
+			if (c != null)
+				break;
+			System.out.println("Invalid champion, please re-enter.");
+		}
 		c.ban();
 		bans.add(c);
 	}
@@ -94,8 +101,14 @@ public class Draft
 	{
 		if(isBlue)
 		{
-			System.out.println("Who does Purple select?");
-			Champion c = find(in.next());
+			Champion c = null;
+			while(c == null)
+			{
+				c = find(in.next());
+				if (c != null)
+					break;
+				System.out.println("Invalid champion, please re-enter.");
+			}
 			c.pick();
 			purplePicks.add(c);
 		}
@@ -103,7 +116,14 @@ public class Draft
 		{
 			recommend();
 			System.out.println("Who do you select?");
-			Champion c = find(in.next());
+			Champion c = null;
+			while(c == null)
+			{
+				c = find(in.next());
+				if (c != null)
+					break;
+				System.out.println("Invalid champion, please re-enter.");
+			}
 			c.pick();
 			purplePicks.add(c);
 		}
@@ -111,7 +131,14 @@ public class Draft
 	public void blueBan()
 	{
 		System.out.println("Who does Blue ban?");
-		Champion c = find(in.next());
+		Champion c = null;
+		while(c == null)
+		{
+			c = find(in.next());
+			if (c != null)
+				break;
+			System.out.println("Invalid champion, please re-enter.");
+		}
 		c.ban();
 		bans.add(c);
 	}
@@ -120,7 +147,14 @@ public class Draft
 		if(!isBlue || Team.size() <= 0)
 		{
 			System.out.println("Who does Blue select?");
-			Champion c = find(in.next());
+			Champion c = null;
+			while(c == null)
+			{
+				c = find(in.next());
+				if (c != null)
+					break;
+				System.out.println("Invalid champion, please re-enter.");
+			}
 			c.pick();
 			bluePicks.add(c);
 		}
@@ -128,7 +162,14 @@ public class Draft
 		{
 			recommend();
 			System.out.println("Who do you select?");
-			Champion c = find(in.next());
+			Champion c = null;
+			while(c == null)
+			{
+				c = find(in.next());
+				if (c != null)
+					break;
+				System.out.println("Invalid champion, please re-enter.");
+			}
 			c.pick();
 			bluePicks.add(c);
 		}
