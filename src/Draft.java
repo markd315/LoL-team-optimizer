@@ -159,10 +159,6 @@ public class Draft
 	{
 		if(c.banned() || c.picked())
 			return 0.0;
-		/*
-		 * if(onTierList) add ((6- tier).15 * weight)
-		 * if(onPrefList) add ((6-tier).15 * weight)
-		 */
 		double weight = 1.0;
 		double index = 1.0;
 		if(enemyTeam.size() > 0)
@@ -170,11 +166,11 @@ public class Draft
 			{
 				if(s.counters(c))
 				{
-					index -= (weight * .2)*(11.0-(double)s.countersInt(c) + .5);
+					index -= (weight * .25) * (11.0-(double)s.countersInt(c));
 				}
 				if(c.counters(s))
 				{
-					index += (weight * .2)*(11.0 - (double)c.countersInt(s) + .5);
+					index += (weight * .25) * (11.0 - (double)c.countersInt(s));
 				}
 			}
 		if(Team.size() > 0)

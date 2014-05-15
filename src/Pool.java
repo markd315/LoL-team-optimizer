@@ -2,8 +2,8 @@ import java.io.IOException;
 
 public class Pool
 {
-	//TODO Fix initial algorithm, output is incorrect.
 	//TODO handle incorrect champion name
+	//TODO Alpha test
 	// Kinda done? Finish finding a way to handle fileIO easily for 5s teams
 	//TODO Handle fileIO for metagame
 	//TODO Handle exceptions
