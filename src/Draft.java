@@ -44,8 +44,6 @@ public class Draft
 		{
 			Team = purplePicks;
 		}
-		//bluePicks.add(new Champion("blank", new String[]{}, new String[]{}, 0, 0, 0, 0, 0, new String[]{}));
-		//purplePicks.add(new Champion("blank", new String[]{}, new String[]{}, 0, 0, 0, 0, 0, new String[]{}));
 	}
 	public static boolean isBlue;
 	Scanner in = new Scanner(System.in);
@@ -68,15 +66,21 @@ public class Draft
 		purpleBan();
 		blueBan();
 		purpleBan();
+		
 		bluePick();
+		
 		purplePick();
 		purplePick();
+		
 		bluePick();
 		bluePick();
+		
 		purplePick();
 		purplePick();
+		
 		bluePick();
 		bluePick();
+		
 		purplePick();
 	}
 	public void purpleBan()
@@ -92,13 +96,51 @@ public class Draft
 		{
 			System.out.println("Who does Purple select?");
 			Champion c = find(in.next());
-			c.ban();
+			c.pick();
 			purplePicks.add(c);
 		}
 		else
 		{
 			recommend();
+			System.out.println("Who do you select?");
+			Champion c = find(in.next());
+			c.pick();
+			purplePicks.add(c);
 		}
+	}
+	
+	public void blueBan()
+	{
+		System.out.println("Who does Blue ban?");
+		Champion c = find(in.next());
+		c.ban();
+		bans.add(c);
+	}
+	public void bluePick()
+	{
+		if(!isBlue || Team.size() <= 0)
+		{
+			System.out.println("Who does Blue select?");
+			Champion c = find(in.next());
+			c.pick();
+			bluePicks.add(c);
+		}
+		else
+		{
+			recommend();
+			System.out.println("Who do you select?");
+			Champion c = find(in.next());
+			c.pick();
+			bluePicks.add(c);
+		}
+	}
+	private void printPicks(List<Champion> x)
+	{
+		for(int i = 0; i < 5; i++)
+		{
+			System.out.println("#" + (i+1) + ": " + x.get(i).getName() + " = " + Math.round(x.get(i).getIndex()*100.0)/100.0);
+		}
+
 	}
 	public void recommend()
 	{
@@ -112,14 +154,7 @@ public class Draft
 		printPicks(sortedByIndex);
 		menu();
 	}
-	private void printPicks(List<Champion> x)
-	{
-		for(int i = 0; i < 5; i++)
-		{
-			System.out.println("#" + (i+1) + ": " + x.get(i).getName() + " = " + Math.round(x.get(i).getIndex()*100.0)/100.0);
-		}
-
-	}
+	
 	public double getSelectionIndex(Champion c)
 	{
 		if(c.banned() || c.picked())
@@ -135,29 +170,29 @@ public class Draft
 			{
 				if(s.counters(c))
 				{
-					index -= (weight * .3)*(10.0-(double)s.countersInt(c));
+					index -= (weight * .2)*(11.0-(double)s.countersInt(c) + .5);
 				}
 				if(c.counters(s))
 				{
-					index += (weight * .3)*(10.0-(double)c.countersInt(s));
+					index += (weight * .2)*(11.0 - (double)c.countersInt(s) + .5);
 				}
 			}
-		if(enemyTeam.size() > 0)
+		if(Team.size() > 0)
 			for(Champion s : Team)
 			{
 				if(s.hasSynergy(c))
 				{
-					index += (weight * .15)*(7.0-(double)s.hasSynergyInt(c));
+					index += (weight * .1)*(6.0-(double)s.hasSynergyInt(c));
 				}
 				if(c.hasSynergy(s))
 				{
-					index += (weight * .15)*(10.0-(double)c.hasSynergyInt(s));
+					index += (weight * .03)*(6.0-(double)c.hasSynergyInt(s));
 				}
 			}
 		ArrayList<Champion> hypotheticalTeam = new ArrayList<Champion>();
 		clone(hypotheticalTeam, Team);
 		hypotheticalTeam.add(c);
-		index += (variability(calcTeamStats(Team)) - variability(calcTeamStats(hypotheticalTeam)))*.02* weight;
+		index += (variability(calcTeamStats(Team)) - variability(calcTeamStats(hypotheticalTeam)))*.06* weight;
 		if(Team.size() > 0)
 		{
 			int testDex = 0;
@@ -257,27 +292,6 @@ public class Draft
 	public static void menu()
 	{
 		//donothing for now
-	}
-	public void blueBan()
-	{
-		System.out.println("Who does Blue ban?");
-		Champion c = find(in.next());
-		c.ban();
-		bans.add(c);
-	}
-	public void bluePick()
-	{
-		if(!isBlue || Team.size() <= 0)
-		{
-			System.out.println("Who does Blue select?");
-			Champion c = find(in.next());
-			c.ban();
-			bluePicks.add(c);
-		}
-		else
-		{
-			recommend();
-		}
 	}
 	public Champion find(String name)
 	{

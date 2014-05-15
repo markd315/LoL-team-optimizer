@@ -50,11 +50,10 @@ public class Champion implements Comparable<Champion>
 
 	public boolean isIn(String x, String[] y)
 	{
-		if(y.length > 0)
+		if(y != null && y.length > 0)
 			for(String q : y)
 				if (x.equalsIgnoreCase(q))
 					return true;
-		//TODO Fix NPE when isAx calls this
 		return false;
 	}
 	public String[] getSynergies()
@@ -63,31 +62,41 @@ public class Champion implements Comparable<Champion>
 	}
 	public boolean isAnADC()
 	{
-		if (this instanceof ADC || isIn("ADC", altRoles))
+		if(this instanceof ADC)
+			return true;
+		if(getAltRoles() != null && getAltRoles().length > 0 && isIn("ADC", altRoles))
 			return true;
 		return false;
 	}
 	public boolean isAMid()
 	{
-		if (this instanceof Mid || isIn("Mid", getAltRoles()))
+		if(this instanceof Mid)
+			return true;
+		if(getAltRoles() != null && getAltRoles().length > 0 && isIn("Mid", altRoles))
 			return true;
 		return false;
 	}
 	public boolean isATop()
 	{
-		if (this instanceof Top || isIn("Top", getAltRoles()))
+		if(this instanceof Top)
+			return true;
+		if(getAltRoles() != null && getAltRoles().length > 0 && isIn("Top", altRoles))
 			return true;
 		return false;
 	}
 	public boolean isAJungle()
 	{
-		if (this instanceof Jungle || isIn("Jungle", altRoles))
+		if(this instanceof Jungle)
+			return true;
+		if(getAltRoles() != null && getAltRoles().length > 0 && isIn("Jungle", altRoles))
 			return true;
 		return false;
 	}
 	public boolean isASupport()
 	{
-		if (this instanceof Support || isIn("Support", altRoles))
+		if(this instanceof Support)
+			return true;
+		if(getAltRoles() != null && getAltRoles().length > 0 && isIn("Support", altRoles))
 			return true;
 		return false;
 	}

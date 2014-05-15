@@ -2,8 +2,8 @@ import java.io.IOException;
 
 public class Pool
 {
-	
-	//TODO Code initial algorithm
+	//TODO Fix initial algorithm, output is incorrect.
+	//TODO handle incorrect champion name
 	// Kinda done? Finish finding a way to handle fileIO easily for 5s teams
 	//TODO Handle fileIO for metagame
 	//TODO Handle exceptions
@@ -12,7 +12,7 @@ public class Pool
 	//TODO Menu for after pool recommendations
 	//TODO Design and code an easy to use, intuitive GUI
 	//TODO Update for Braum
-
+	
 	static Champion Aatrox = new Top("Aatrox",
 			new String[] {"Jax", "Riven", "Teemo", "Fiora", "Renekton", "Tryndamere", "Pantheon", "Nasus", "LeeSin", "Ahri"},
 			new String[]{"Yasuo", "Zilean", "Tryndamere", "LeeSin", "Ahri"},
