@@ -66,21 +66,21 @@ public class Draft
 		purpleBan();
 		blueBan();
 		purpleBan();
-		
+
 		bluePick();
-		
+
 		purplePick();
 		purplePick();
-		
+
 		bluePick();
 		bluePick();
-		
+
 		purplePick();
 		purplePick();
-		
+
 		bluePick();
 		bluePick();
-		
+
 		purplePick();
 	}
 	public void purpleBan()
@@ -108,7 +108,6 @@ public class Draft
 			purplePicks.add(c);
 		}
 	}
-	
 	public void blueBan()
 	{
 		System.out.println("Who does Blue ban?");
@@ -154,7 +153,7 @@ public class Draft
 		printPicks(sortedByIndex);
 		menu();
 	}
-	
+
 	public double getSelectionIndex(Champion c)
 	{
 		if(c.banned() || c.picked())

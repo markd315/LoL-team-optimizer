@@ -122,18 +122,18 @@ public class Champion implements Comparable<Champion>
 
 	public int countersInt(Champion q)
 	{
-		for(int i = 0; i < counterpicks.length; i++)
+		for(int i = 0; i < q.getCounters().length; i++)
 		{
-			if(counterpicks[i].equalsIgnoreCase(q.getName()))
+			if(q.getCounters()[i].equalsIgnoreCase(this.getName()))
 				return i;
 		}
 		return -1;
 	}
 	public boolean counters(Champion q)
 	{
-		for(String c : counterpicks)
+		for(String c : q.getCounters())
 		{
-			if(c.equalsIgnoreCase(q.getName()))
+			if(c.equalsIgnoreCase(this.getName()))
 				return true;
 		}
 		return false;
