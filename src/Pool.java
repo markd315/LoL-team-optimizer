@@ -2,17 +2,12 @@ import java.io.IOException;
 
 public class Pool
 {
-	//TODO handle incorrect champion name
 	//TODO Alpha test
-	// Kinda done? Finish finding a way to handle fileIO easily for 5s teams
-	//TODO Handle fileIO for metagame
-	//TODO Handle exceptions
 	//TODO Provide toggles/sliders for algorithm weight
-	
 	//TODO Menu for after pool recommendations
 	//TODO Design and code an easy to use, intuitive GUI
 	//TODO Update for Braum
-	
+	public static Meta m;
 	static Champion Aatrox = new Top("Aatrox",
 			new String[] {"Jax", "Riven", "Teemo", "Fiora", "Renekton", "Tryndamere", "Pantheon", "Nasus", "LeeSin", "Ahri"},
 			new String[]{"Yasuo", "Zilean", "Tryndamere", "LeeSin", "Ahri"},
@@ -609,13 +604,17 @@ public class Pool
 
 	public static void main(String[] args) throws IOException
 	{
-		//Input in = new Input();
-		//Meta m = Input.getMeta();
+		Input in = new Input();
+		m = Input.getMeta();
 		Draft d = new Draft();
 		d.draft();
 	}
 	public static Champion[] getPool()
 	{
 		return pool;
+	}
+	public static Meta getMeta()
+	{
+		return m;
 	}
 }

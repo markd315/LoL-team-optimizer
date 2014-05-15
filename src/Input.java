@@ -46,11 +46,9 @@ public class Input
 	public Champion[] tokenize(String x)
 	{
 		ArrayList<Champion> c = new ArrayList<Champion>();
-		StringTokenizer st = new StringTokenizer(x);
-		while (st.hasMoreTokens()) 
-		{
-			c.add(find(st.nextToken()));
-		}
+		String[] z = x.split(" ");
+		for(String s : z)
+			c.add(find(s));
 		return c.toArray(null);
 	}
 	public Champion find(String name)
