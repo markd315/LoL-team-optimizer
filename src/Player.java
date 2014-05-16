@@ -47,27 +47,27 @@ public class Player
 		for(Champion c : aTier)
 		{
 			if(x.equals(c))
-			return 1;
+				return 1;
 		}
 		for(Champion c : bTier)
 		{
 			if(x.equals(c))
-			return 2;
+				return 2;
 		}
 		for(Champion c : cTier)
 		{
 			if(x.equals(c))
-			return 3;
+				return 3;
 		}
 		for(Champion c : dTier)
 		{
 			if(x.equals(c))
-			return 4;
+				return 4;
 		}
 		for(Champion c : eTier)
 		{
 			if(x.equals(c))
-			return 5;
+				return 5;
 		}
 		return 6;
 	}

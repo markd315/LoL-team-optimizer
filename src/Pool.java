@@ -2,8 +2,7 @@ import java.io.IOException;
 
 public class Pool
 {
-	//TODO Alpha test
-	//TODO Provide toggles/sliders for algorithm weight
+	//TODO options: doBanPhase, useRoleFit, useMobilityStat, weight vars for(stdIndex, overall weight, counter, synergy, teamstats, rolefit, teampref, meta), #reccommendations, 
 	//TODO Menu for after pool recommendations
 	//TODO Design and code an easy to use, intuitive GUI
 	//TODO Update for Braum
@@ -604,7 +603,7 @@ public class Pool
 
 	public static void main(String[] args) throws IOException
 	{
-		Input in = new Input();
+		new Input();
 		m = Input.getMeta();
 		Draft d = new Draft();
 		d.draft();

@@ -1,15 +1,17 @@
 import java.util.*;
 import java.io.*;
 
+
 public class Input
 {
 	static Scanner meta;
 	static Scanner players;
-	ArrayList<Player> playerData;
+	static ArrayList<Player> playerData;
 	private static Meta m;
+
 	public Input() throws IOException
 	{
-		//Input meta
+		// Input meta
 		meta = new Scanner(new File("src/meta.cfg"));
 		meta.nextLine();
 		String aa = meta.nextLine();
@@ -18,9 +20,8 @@ public class Input
 		String dd = meta.nextLine();
 		String ee = meta.nextLine();
 		m = new Meta(tokenize(aa), tokenize(bb), tokenize(cc), tokenize(dd), tokenize(ee));
-		
-		
-		//Input players
+
+		// Input players
 		players = new Scanner(new File("src/yourPlayers.cfg"));
 		ArrayList<String> playerNames = new ArrayList<String>();
 		players.nextLine();
@@ -32,12 +33,12 @@ public class Input
 		for(String name : playerNames)
 		{
 			Scanner x = new Scanner(new File("src/" + name + ".cfg"));
-			x.nextLine(); //clears comment line of cfg file
+			x.nextLine(); // clears comment line of cfg file
 			String a = x.nextLine();
 			String b = x.nextLine();
 			String c = x.nextLine();
 			String d = x.nextLine();
-			String e = x.nextLine();		
+			String e = x.nextLine();
 			Player pl = new Player(name, tokenize(a), tokenize(b), tokenize(c), tokenize(d), tokenize(e));
 			playerData.add(pl);
 			x.close();
@@ -49,18 +50,18 @@ public class Input
 		String[] z = x.split(" ");
 		for(String s : z)
 			c.add(find(s));
-		return c.toArray(null);
+		return c.toArray(new Champion[c.size()]);
 	}
 	public Champion find(String name)
 	{
 		for(Champion champ : Pool.getPool())
 		{
-			if (champ.getName().equalsIgnoreCase(name))
+			if(champ.getName().equalsIgnoreCase(name))
 				return champ;
 		}
 		return null;
 	}
-	public ArrayList<Player> getPlayerData()
+	public static ArrayList<Player> getPlayerData()
 	{
 		return playerData;
 	}
@@ -72,23 +73,29 @@ public class Input
 	{
 		x.nextLine();
 	}
-	public static int countLines(String filename) throws IOException {
+	public static int countLines(String filename) throws IOException
+	{
 		InputStream is = new BufferedInputStream(new FileInputStream(filename));
-		try {
+		try
+		{
 			byte[] c = new byte[1024];
 			int count = 0;
 			int readChars = 0;
 			boolean empty = true;
-			while ((readChars = is.read(c)) != -1) {
+			while((readChars = is.read(c)) != -1)
+			{
 				empty = false;
-				for (int i = 0; i < readChars; ++i) {
-					if (c[i] == '\n') {
+				for(int i = 0; i < readChars; ++i)
+				{
+					if(c[i] == '\n')
+					{
 						++count;
 					}
 				}
 			}
 			return (count == 0 && !empty) ? 1 : count;
-		} finally {
+		} finally
+		{
 			is.close();
 		}
 	}
@@ -96,5 +103,4 @@ public class Input
 	{
 		return m;
 	}
-
 }
