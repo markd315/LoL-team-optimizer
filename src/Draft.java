@@ -10,6 +10,7 @@ public class Draft
 	public static ArrayList<Champion> enemyTeam = new ArrayList<Champion>();
 	public static ArrayList<Champion> Team = new ArrayList<Champion>();
 	public static boolean isBlue;
+	public Scanner in = new Scanner(System.in);
 
 	public static int[] teamStats = new int[4];
 
@@ -52,9 +53,7 @@ public class Draft
 	public void draft() throws IOException
 	{
 		System.out.println("What team are you? (Blue/Purple or B/P)");
-		Scanner in = new Scanner(System.in);
-		String temp = in.next();
-		in.close();
+		String temp = in.nextLine();
 		if(temp.equalsIgnoreCase("B") || temp.equalsIgnoreCase("Blue") || temp.equalsIgnoreCase("Blu"))
 		{
 			isBlue = true;
@@ -92,9 +91,7 @@ public class Draft
 		Champion c = null;
 		while(c == null)
 		{
-			Scanner in = new Scanner(System.in);
-			c = find(in.next().replaceAll(" ", ""));
-			in.close();
+			c = find(in.nextLine().replaceAll(" ", ""));
 			if(c == null)
 				System.out.println("Invalid champion, please re-enter.");
 		}
@@ -109,9 +106,7 @@ public class Draft
 			Champion c = null;
 			while(c == null)
 			{
-				Scanner in = new Scanner(System.in);
-				c = find(in.next().replaceAll(" ", ""));
-				in.close();
+				c = find(in.nextLine().replaceAll(" ", ""));
 				if(c == null)
 					System.out.println("Invalid champion, please re-enter.");
 			}
@@ -127,9 +122,7 @@ public class Draft
 			Champion c = null;
 			while(c == null)
 			{
-				Scanner in = new Scanner(System.in);
-				c = find(in.next());
-				in.close();
+				c = find(in.nextLine());
 				if(c == null)
 					System.out.println("Invalid champion, please re-enter.");
 			}
@@ -143,9 +136,7 @@ public class Draft
 		Champion c = null;
 		while(c == null)
 		{
-			Scanner in = new Scanner(System.in);
-			c = find(in.next().replaceAll(" ", ""));
-			in.close();
+			c = find(in.nextLine().replaceAll(" ", ""));
 			if(c == null)
 				System.out.println("Invalid champion, please re-enter.");
 		}
@@ -160,9 +151,7 @@ public class Draft
 			Champion c = null;
 			while(c == null)
 			{
-				Scanner in = new Scanner(System.in);
-				c = find(in.next().replaceAll(" ", ""));
-				in.close();
+				c = find(in.nextLine().replaceAll(" ", ""));
 				if(c == null)
 					System.out.println("Invalid champion, please re-enter.");
 			}
@@ -175,9 +164,7 @@ public class Draft
 			Champion c = null;
 			while(c == null)
 			{
-				Scanner in = new Scanner(System.in);
-				c = find(in.next());
-				in.close();
+				c = find(in.nextLine());
 				if(c == null)
 					System.out.println("Invalid champion, please re-enter.");
 			}
