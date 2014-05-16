@@ -54,7 +54,7 @@ public class Draft
 		System.out.println("What team are you? (Blue/Purple or B/P)");
 		Scanner in = new Scanner(System.in);
 		String temp = in.next();
-
+		in.close();
 		if(temp.equalsIgnoreCase("B") || temp.equalsIgnoreCase("Blue") || temp.equalsIgnoreCase("Blu"))
 		{
 			isBlue = true;
@@ -94,7 +94,7 @@ public class Draft
 		{
 			Scanner in = new Scanner(System.in);
 			c = find(in.next().replaceAll(" ", ""));
-
+			in.close();
 			if(c == null)
 				System.out.println("Invalid champion, please re-enter.");
 		}
@@ -111,7 +111,7 @@ public class Draft
 			{
 				Scanner in = new Scanner(System.in);
 				c = find(in.next().replaceAll(" ", ""));
-
+				in.close();
 				if(c == null)
 					System.out.println("Invalid champion, please re-enter.");
 			}
@@ -129,7 +129,7 @@ public class Draft
 			{
 				Scanner in = new Scanner(System.in);
 				c = find(in.next());
-
+				in.close();
 				if(c == null)
 					System.out.println("Invalid champion, please re-enter.");
 			}
@@ -145,7 +145,7 @@ public class Draft
 		{
 			Scanner in = new Scanner(System.in);
 			c = find(in.next().replaceAll(" ", ""));
-
+			in.close();
 			if(c == null)
 				System.out.println("Invalid champion, please re-enter.");
 		}
@@ -162,7 +162,7 @@ public class Draft
 			{
 				Scanner in = new Scanner(System.in);
 				c = find(in.next().replaceAll(" ", ""));
-
+				in.close();
 				if(c == null)
 					System.out.println("Invalid champion, please re-enter.");
 			}
@@ -177,7 +177,7 @@ public class Draft
 			{
 				Scanner in = new Scanner(System.in);
 				c = find(in.next());
-
+				in.close();
 				if(c == null)
 					System.out.println("Invalid champion, please re-enter.");
 			}
