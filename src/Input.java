@@ -57,6 +57,8 @@ public class Input
 		config.next();
 		bansPhase = parseBoolean(config.nextLine());
 		config.next();
+		useRoleFit = parseBoolean(config.nextLine());
+		config.next();
 		useMobilityStat = parseBoolean(config.nextLine());
 		config.next();
 		numSuggestions = Integer.parseInt(config.nextLine().replace(" ", ""));
