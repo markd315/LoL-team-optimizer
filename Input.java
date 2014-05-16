@@ -12,7 +12,7 @@ public class Input
 	public Input() throws IOException
 	{
 		// Input meta
-		meta = new Scanner(new File("src/meta.cfg"));
+		meta = new Scanner(new File("config/meta.cfg"));
 		meta.nextLine();
 		String aa = meta.nextLine();
 		String bb = meta.nextLine();
@@ -22,7 +22,7 @@ public class Input
 		m = new Meta(tokenize(aa), tokenize(bb), tokenize(cc), tokenize(dd), tokenize(ee));
 
 		// Input players
-		players = new Scanner(new File("src/yourPlayers.cfg"));
+		players = new Scanner(new File("config/yourPlayers.cfg"));
 		ArrayList<String> playerNames = new ArrayList<String>();
 		players.nextLine();
 		while(players.hasNext())
@@ -32,7 +32,7 @@ public class Input
 		playerData = new ArrayList<Player>();
 		for(String name : playerNames)
 		{
-			Scanner x = new Scanner(new File("src/" + name + ".cfg"));
+			Scanner x = new Scanner(new File("config/players/" + name + ".cfg"));
 			x.nextLine(); // clears comment line of cfg file
 			String a = x.nextLine();
 			String b = x.nextLine();
