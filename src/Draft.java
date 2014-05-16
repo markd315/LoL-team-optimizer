@@ -12,7 +12,7 @@ public class Draft
 	public static boolean isBlue;
 	public Scanner in = new Scanner(System.in);
 
-	public static int[] teamStats = new int[4];
+	public static int[] teamStats;
 
 	public static int[] calcTeamStats(ArrayList<Champion> x)
 	{
@@ -20,18 +20,20 @@ public class Draft
 		int ap = 0;
 		int hp = 0;
 		int cc = 0;
-		// int mob = 0;
+		int mob = 0;
 		for(Champion c : x)
 		{
 			ad += c.getAD();
 			ap += c.getAP();
 			hp += c.getTank();
 			cc += c.getCC();
-			// mob += c.getMob();
+			mob += c.getMob();
 		}
+		if(Input.isUseMobilityStat())
+			return new int[]
+			{ad, ap, hp, cc};
 		return new int[]
-		{ad, ap, hp, cc};
-
+		{ad, ap, hp, cc, mob};
 	}
 	public static void setTeams()
 	{
@@ -62,12 +64,15 @@ public class Draft
 			isBlue = false;
 		}
 		setTeams();
-		blueBan();
-		purpleBan();
-		blueBan();
-		purpleBan();
-		blueBan();
-		purpleBan();
+		if(Input.isBansPhase())
+		{
+			blueBan();
+			purpleBan();
+			blueBan();
+			purpleBan();
+			blueBan();
+			purpleBan();
+		}
 
 		bluePick();
 
@@ -174,7 +179,7 @@ public class Draft
 	}
 	private void printPicks(List<Champion> x)
 	{
-		for(int i = 0; i < 10; i++)
+		for(int i = 0; i < Input.getNumSuggestions(); i++)
 		{
 			System.out.println("#" + (i + 1) + ": " + x.get(i).getName() + " = " + Math.round(x.get(i).getIndex() * 1000.0) / 1000.0);
 		}
@@ -196,47 +201,42 @@ public class Draft
 	{
 		if(c.banned() || c.picked())
 			return 0.0;
-		
-		
-		double weight = 1.0;
-		double index = 1.0;
-		
-		
+
+		double weight = Input.getOverallWeight();
+		double index = Input.getStartIndex();
+
 		if(enemyTeam.size() > 0)
 			for(Champion s : enemyTeam)
 			{
 				if(s.counters(c))
 				{
-					index -= (weight * .25) * (11.0 - (double)s.countersInt(c));
+					index -= (Input.getCounterWeight() * weight * .25) * (11.0 - (double)s.countersInt(c));
 				}
 				if(c.counters(s))
 				{
-					index += (weight * .25) * (11.0 - (double)c.countersInt(s));
+					index += (Input.getCounterWeight() * weight * .25) * (11.0 - (double)c.countersInt(s));
 				}
 			}
-		
-		
+
 		if(Team.size() > 0)
 			for(Champion s : Team)
 			{
-				if(s.hasSynergy(c))
+				if(s.hasSynergy(c)) 
 				{
-					index += (weight * .1) * (6.0 - (double)s.hasSynergyInt(c));
+					index += (Input.getSynergyWeight() * weight * .1) * (6.0 - (double)s.hasSynergyInt(c));
 				}
 				if(c.hasSynergy(s))
 				{
-					index += (weight * .03) * (6.0 - (double)c.hasSynergyInt(s));
+					index += (Input.getSynergyWeight() * weight * .03) * (6.0 - (double)c.hasSynergyInt(s));
 				}
 			}
-		
-		
+
 		ArrayList<Champion> hypotheticalTeam = new ArrayList<Champion>();
 		clone(hypotheticalTeam, Team);
 		hypotheticalTeam.add(c);
-		index += (variability(calcTeamStats(Team)) - variability(calcTeamStats(hypotheticalTeam))) * .06 * weight;
-		
-		
-		if(Team.size() > 0)
+		index += (variability(calcTeamStats(Team)) - variability(calcTeamStats(hypotheticalTeam))) * .06 * weight * Input.getTeamStatsWeight();
+
+		if(Team.size() > 0 && Input.isUseRoleFit())
 		{
 			int testDex = 0;
 			if(!hasMid() && c.isAMid())
@@ -250,22 +250,20 @@ public class Draft
 			if(!hasJungle() && c.isAJungle())
 				testDex++;
 			double roleFit = ((double)testDex / (double)c.countRoles());
-			roleFit *= .05 * weight;
+			roleFit *= .05 * weight * Input.getRoleFitWeight();
 			index += roleFit;
 		}
-		
+
 		double minTier = 6.0;
 		for(Player p : Input.getPlayerData())
 		{
-			if (p.tier(c) < minTier)
+			if(p.tier(c) < minTier)
 				minTier = p.tier(c);
 		}
-		index += (weight * .5) * (6.0 - minTier);
-		
-		
-		index += (weight * .25) * (6.0 - Input.getMeta().tier(c));
-		
-		
+		index += (weight * .5 * Input.getPlayerPrefWeight()) * (6.0 - minTier);
+
+		index += (weight * .25 * Input.getMetaStrengthWeight()) * (6.0 - Input.getMeta().tier(c));
+
 		return index;
 	}
 	public void clone(ArrayList<Champion> blank, ArrayList<Champion> x)

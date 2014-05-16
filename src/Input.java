@@ -8,6 +8,10 @@ public class Input
 	static Scanner players;
 	static ArrayList<Player> playerData;
 	private static Meta m;
+	static Scanner config;
+	static boolean bansPhase, useRoleFit, useMobilityStat;
+	static int numSuggestions;
+	static double startIndex, overallWeight, counterWeight, synergyWeight, teamStatsWeight, roleFitWeight, playerPrefWeight, metaStrengthWeight;
 
 	public Input() throws IOException
 	{
@@ -43,6 +47,146 @@ public class Input
 			playerData.add(pl);
 			x.close();
 		}
+		players.close();
+		
+		
+		
+		//Input config options
+		config = new Scanner(new File("config/options.cfg"));
+		config.nextLine();
+		config.next();
+		bansPhase = parseBoolean(config.nextLine());
+		config.next();
+		useMobilityStat = parseBoolean(config.nextLine());
+		config.next();
+		numSuggestions = Integer.parseInt(config.nextLine().replace(" ", ""));
+		config.next();
+		startIndex = Double.parseDouble(config.nextLine().replace(" ", ""));
+		config.next();
+		overallWeight = Double.parseDouble(config.nextLine().replace(" ", ""));
+		config.next();
+		counterWeight = Double.parseDouble(config.nextLine().replace(" ", ""));
+		config.next();
+		synergyWeight = Double.parseDouble(config.nextLine().replace(" ", ""));
+		config.next();
+		teamStatsWeight = Double.parseDouble(config.nextLine().replace(" ", ""));
+		config.next();
+		roleFitWeight = Double.parseDouble(config.nextLine().replace(" ", ""));
+		config.next();
+		playerPrefWeight = Double.parseDouble(config.nextLine().replace(" ", ""));
+		config.next();
+		metaStrengthWeight = Double.parseDouble(config.nextLine().replace(" ", ""));
+	}
+	private boolean parseBoolean(String x)
+	{
+		x = x.replaceAll(" ", "");
+		if(x.equalsIgnoreCase("T") || x.equalsIgnoreCase("True") || x.equalsIgnoreCase("Tru"))
+			return true;
+		return false;
+	}
+	public static Scanner getConfig()
+	{
+		return config;
+	}
+	public static void setConfig(Scanner config)
+	{
+		Input.config = config;
+	}
+	public static boolean isBansPhase()
+	{
+		return bansPhase;
+	}
+	public static void setBansPhase(boolean bansPhase)
+	{
+		Input.bansPhase = bansPhase;
+	}
+	public static boolean isUseRoleFit()
+	{
+		return useRoleFit;
+	}
+	public static void setUseRoleFit(boolean useRoleFit)
+	{
+		Input.useRoleFit = useRoleFit;
+	}
+	public static boolean isUseMobilityStat()
+	{
+		return useMobilityStat;
+	}
+	public static void setUseMobilityStat(boolean useMobilityStat)
+	{
+		Input.useMobilityStat = useMobilityStat;
+	}
+	public static int getNumSuggestions()
+	{
+		return numSuggestions;
+	}
+	public static void setNumSuggestions(int numSuggestions)
+	{
+		Input.numSuggestions = numSuggestions;
+	}
+	public static double getStartIndex()
+	{
+		return startIndex;
+	}
+	public static void setStartIndex(double startIndex)
+	{
+		Input.startIndex = startIndex;
+	}
+	public static double getOverallWeight()
+	{
+		return overallWeight;
+	}
+	public static void setOverallWeight(double overallWeight)
+	{
+		Input.overallWeight = overallWeight;
+	}
+	public static double getCounterWeight()
+	{
+		return counterWeight;
+	}
+	public static void setCounterWeight(double counterWeight)
+	{
+		Input.counterWeight = counterWeight;
+	}
+	public static double getSynergyWeight()
+	{
+		return synergyWeight;
+	}
+	public static void setSynergyWeight(double synergyWeight)
+	{
+		Input.synergyWeight = synergyWeight;
+	}
+	public static double getTeamStatsWeight()
+	{
+		return teamStatsWeight;
+	}
+	public static void setTeamStatsWeight(double teamStatsWeight)
+	{
+		Input.teamStatsWeight = teamStatsWeight;
+	}
+	public static double getRoleFitWeight()
+	{
+		return roleFitWeight;
+	}
+	public static void setRoleFitWeight(double roleFitWeight)
+	{
+		Input.roleFitWeight = roleFitWeight;
+	}
+	public static double getPlayerPrefWeight()
+	{
+		return playerPrefWeight;
+	}
+	public static void setPlayerPrefWeight(double playerPrefWeight)
+	{
+		Input.playerPrefWeight = playerPrefWeight;
+	}
+	public static double getMetaStrengthWeight()
+	{
+		return metaStrengthWeight;
+	}
+	public static void setMetaStrengthWeight(double metaStrengthWeight)
+	{
+		Input.metaStrengthWeight = metaStrengthWeight;
 	}
 	public Champion[] tokenize(String x)
 	{
